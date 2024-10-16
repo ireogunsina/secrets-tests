@@ -18,6 +18,6 @@
         project_path: /var/lib/jenkins/workspace/Test Create Ansible files for Environment/msk
         workspace: 
         state: present        
-        variables_files: /var/lib/jenkins/workspace/Test Create Ansible files for Environment/config/MSK.tfvars
+        variables_files: environment/tfvars/MSK.tfvars
       register: msk_outputs
     - debug: var=msk_outputs.stdout_lines
