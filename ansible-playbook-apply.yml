@@ -12,12 +12,12 @@
         -backend-config="workspace_key_prefix=dev1"
         -backend-config="dynamodb_table=my-terraform-state-lock-table"
       args:
-        chdir: terraform/msk
+        chdir: ../terraform/msk
     - name: Apply MSK module
       cloud.terraform.terraform:
-        project_path: terraform/msk
+        project_path: ../terraform/msk
         workspace: 
         state: present        
-        variables_files: environment/tfvars/MSK.tfvars
+        variables_files: tfvars/MSK.tfvars
       register: msk_outputs
     - debug: var=msk_outputs.stdout_lines
