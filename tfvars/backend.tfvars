@@ -3,5 +3,5 @@ bucket="my-terraform-state-bucket"
 dynamodb_table="my-terraform-state-lock-table"
 key="terraform.tfstate"
 encrypt="true"
-workspace_key_prefix="dev1"
+workspace_key_prefix="testfabrizio"
 

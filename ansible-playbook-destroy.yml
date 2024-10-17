@@ -9,7 +9,7 @@
         -backend-config="bucket=my-terraform-state-bucket"
         -backend-config="key=state-msk.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=dev1"
+        -backend-config="workspace_key_prefix=testfabrizio"
         -backend-config="dynamodb_table=my-terraform-state-lock-table"
       args:
         chdir: ../terraform/csf_devops_cn_baserepo/msk
