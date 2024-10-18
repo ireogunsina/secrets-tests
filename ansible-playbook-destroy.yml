@@ -6,11 +6,11 @@
     - name: Initialize MSK module
       command: >
         terraform init
-        -backend-config="bucket=my-terraform-state-bucket"
+        -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-msk.tfstate"
         -backend-config="region=us-east-1"
         -backend-config="workspace_key_prefix=testfabrizio"
-        -backend-config="dynamodb_table=my-terraform-state-lock-table"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../terraform/msk
     - name: Apply MSK module
