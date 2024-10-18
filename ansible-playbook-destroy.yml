@@ -12,12 +12,12 @@
         -backend-config="workspace_key_prefix=testfabrizio"
         -backend-config="dynamodb_table=my-terraform-state-lock-table"
       args:
-        chdir: ../terraform/msk
+        chdir: /var/lib/jenkins/workspace/Create Ansible files for Environment/csf_devops_cn_baserepo/msk
     - name: Apply MSK module
       cloud.terraform.terraform:
-        project_path: ../terraform/msk
+        project_path: /var/lib/jenkins/workspace/Create Ansible files for Environment/csf_devops_cn_baserepo/msk
         workspace: 
         state: absent
-        variables_files: tfvars/MSK.tfvars
+        variables_files: /var/lib/jenkins/workspace/Create Ansible files for Environment/csf_devops_cn_baserepo/config/MSK.tfvars
       register: msk_outputs
     - debug: var=msk_outputs.stdout_lines
