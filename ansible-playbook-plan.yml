@@ -18,7 +18,7 @@
         project_path: ../terraform/msk
         workspace: testfabrizio
         state: planned
-        plan_file: ../terraform/msk/terraform.tfplan
+        plan_file: terraform.tfplan
         variables_files: ../../environment/tfvars/MSK.tfvars
       register: msk_outputs
     - debug: var=msk_outputs.stdout_lines
