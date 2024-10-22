@@ -12,12 +12,12 @@
         -backend-config="workspace_key_prefix=testfabrizio"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
-        chdir: /workspace/Create Ansible files for Environment/msk
+        chdir: ../terraformmsk
     - name: Apply MSK module
       cloud.terraform.terraform:
-        project_path: /workspace/Create Ansible files for Environment/msk
+        project_path: ../terraformmsk
         workspace: testfabrizio
         state: present        
-        variables_files: /workspace/Create Ansible files for Environment/config/MSK.tfvars
+        variables_files: ../../environment/tfvarsMSK.tfvars
       register: msk_outputs
     - debug: var=msk_outputs.stdout_lines
