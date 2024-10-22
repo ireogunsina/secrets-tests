@@ -1,6 +1,6 @@
-mskPrivateSubnetIds = ["subnet-0c3f2194402c04fa9", "subnet-0fae1d8535ce7b3f1", "subnet-08f4ca71cbb2f3fff"]
+mskPrivateSubnetIds = ["subnet-0080a252cdef8fca8", "subnet-0efdd29ff5da430c0"]
 
-vpc_id = "vpc-018627f25e865fb9a"
+vpc_id = "vpc-092c03af042c4e5b9"
 
 region = "us-east-1"
 
