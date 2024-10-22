@@ -13,11 +13,13 @@ common_tags = {
 product_family = "CSD"
 
 msk = {
-  source_security_group_id = "sg-08b439c941a9b9f44"
-  number_of_kafka_broker_nodes = 3
-  instance_type = "kafka.t3.small"
-  disk_size_per_broker = 10
-  msk_cluster_name = "fabriziotest-msk-cluster1"
+  config = {
+    source_security_group_id = "sg-08b439c941a9b9f44"
+    number_of_kafka_broker_nodes = 3
+    instance_type = "kafka.t3.small"
+    disk_size_per_broker = 10
+    msk_cluster_name = "fabriziotest-msk-cluster1"
+  }
 }
 
 csd_tags = {
