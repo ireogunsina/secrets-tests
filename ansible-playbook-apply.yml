@@ -16,7 +16,7 @@
     - name: Apply MSK module
       cloud.terraform.terraform:
         project_path: ../terraform/msk
-        workspace: 
+        workspace: testfabrizio
         state: present        
         variables_files: tfvars/MSK.tfvars
       register: msk_outputs

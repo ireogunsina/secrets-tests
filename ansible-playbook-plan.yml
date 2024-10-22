@@ -16,7 +16,7 @@
     - name: Plan MSK module
       cloud.terraform.terraform:
         project_path: ../terraform/msk
-        workspace: 
+        workspace: testfabrizio
         state: planned
         plan_file: ../terraform/msk/terraform.tfplan
         variables_files: tfvars/MSK.tfvars
