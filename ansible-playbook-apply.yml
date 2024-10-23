@@ -21,3 +21,54 @@
         variables_files: ../../environment/tfvars/MSK.tfvars
       register: msk_outputs
     - debug: var=msk_outputs.stdout_lines
+    - name: Initialize Elasticsearch module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-es.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=testfabrizio"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../terraform/es_os
+    - name: Apply Elasticsearch module
+      cloud.terraform.terraform:
+        project_path: ../terraform/es_os
+        workspace: testfabrizio
+        state: present
+        variables_files: ../../environment/tfvars/Elasticsearch.tfvars
+      register: es_os_outputs
+    - debug: var=es_os_outputs.stdout_lines
+    - name: Remove existing kafka_conn_info block
+      replace:
+        path: ../../environment/tfvars/EKS.tfvars
+        regexp: 'kafka_conn_info\s*=\s*\{(?:[^{}]*|\{[^{}]*\})*\}'
+        replace: ''
+
+    - name: Remove existing es_info block
+      replace:
+        path: ../../environment/tfvars/EKS.tfvars
+        regexp: 'es_info = \{[^}]*\}'
+        replace: ''
+
+    - name: Create eks.tfvars with module outputs
+      blockinfile:
+        path: /workspace/Create
+    - name: Initialize EKS module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-eks.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=testfabrizio"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../terraform/eks
+    - name: Apply EKS module
+      cloud.terraform.terraform:
+        project_path: ../terraform/eks
+        workspace: testfabrizio
+        state: present
+        variables_files: ../../environment/tfvars/EKS.tfvars
+      register: eks_outputs
+    - debug: var=eks_outputs.stdout_lines
