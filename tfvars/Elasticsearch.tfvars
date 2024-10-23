@@ -21,6 +21,7 @@ es = {
     es_node_count               = 2
     es_zone_awareness_enabled   = true
     es_az_count                 = 2
+    es_version                  = "7.10"
     es_domain_name              = "fabriziotest"
     AWS_ACCOUNT_NO              = "895697895152" 
   }
