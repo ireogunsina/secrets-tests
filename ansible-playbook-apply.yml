@@ -41,13 +41,13 @@
     - debug: var=es_os_outputs.stdout_lines
     - name: Remove existing kafka_conn_info block
       replace:
-        path: ../../environment/tfvars/EKS.tfvars
+        path: tfvars/EKS.tfvars
         regexp: 'kafka_conn_info\s*=\s*\{(?:[^{}]*|\{[^{}]*\})*\}'
         replace: ''
 
     - name: Remove existing es_info block
       replace:
-        path: ../../environment/tfvars/EKS.tfvars
+        path: tfvars/EKS.tfvars
         regexp: 'es_info = \{[^}]*\}'
         replace: ''
 
