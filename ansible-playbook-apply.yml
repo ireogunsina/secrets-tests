@@ -53,7 +53,26 @@
 
     - name: Create eks.tfvars with module outputs
       blockinfile:
-        path: /workspace/Create
+        path: tfvars/EKS.tfvars
+        block: |
+
+          kafka_conn_info = {
+            "MSK" = {
+              kafka_provider        = "MSK"
+              msk_security_group    = "{{ msk_outputs.outputs.msk_security_group.value }}"
+              bootstrap_brokers_tls = "{{ msk_outputs.outputs.bootstrap_brokers_tls.value }}"
+              access_key            = "N/A"
+              secret_access_key     = "N/A"
+              zookeeper_connect_string = "{{ msk_outputs.outputs.zookeeper_connect_string.value }}"
+            }
+          }
+
+          es_info = {
+            es_security_group  = ["{{ es_os_outputs.outputs.es_security_group.value }}"]
+            es_private_subnets = $(grep -oP 'subnet_ids\s*=\s*\[\K.*?(?=\])' Elasticsearch.tfvars | sed 's/^/[/;s/$/]/')
+            es_log_endpoint    = "{{ es_os_outputs.outputs.endpoint.value }}"
+            es_app_endpoint    = "null"
+          }
     - name: Initialize EKS module
       command: >
         terraform init
