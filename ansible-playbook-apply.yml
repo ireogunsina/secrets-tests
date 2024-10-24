@@ -69,7 +69,7 @@
 
           es_info = {
             es_security_group  = ["{{ es_os_outputs.outputs.es_security_group.value }}"]
-            es_private_subnets = 
+            es_private_subnets = ["subnet-0080a252cdef8fca8", "subnet-0fa1633be63514439"]
             es_log_endpoint    = "{{ es_os_outputs.outputs.endpoint.value }}"
             es_app_endpoint    = "null"
           }
