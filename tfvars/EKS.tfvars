@@ -123,6 +123,37 @@ map_users = [
 #  }
 #]
 
+serviceaccounts = [
+  {
+    serviceaccount = "pi-sa"
+    namespace      = "pi"
+  },
+  {
+    serviceaccount = "cpq-sa"
+    namespace      = "cpq"
+  },
+  {
+    serviceaccount = "om-sa"
+    namespace      = "om"
+  },
+  {
+    serviceaccount = "catalog-sa"
+    namespace      = "catalog"
+  },
+  {
+    serviceaccount = "cs-sa"
+    namespace      = "cs"
+  },
+  {
+    serviceaccount = "dms-sa"
+    namespace      = "cs"
+  },
+  {
+    serviceaccount = "informatics-sa"
+    namespace      = "informatics"
+  }
+]
+
 # to create TLS secret in the cluster, customize based on serviceaccounts namespace parameter.
 # allowed values are ["logging", "monitoring", "pi", "cpq", "catalog", "cs", "om", "informatics", "default"]
 all_namespaces = ["logging", "monitoring", "pi", "cpq", "catalog", "cs", "om", "informatics", "tl", "default"]
