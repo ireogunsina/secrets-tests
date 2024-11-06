@@ -3,7 +3,7 @@ region       = "us-east-1"
 vpc_id = "vpc-092c03af042c4e5b9"
 
 ##Make Sure, es_node_count = es_az_count = no. of subnet_ids
-subnet_ids =  ["subnet-0080a252cdef8fca8", "subnet-0fa1633be63514439"] 
+subnet_ids =  ["subnet-0fa1633be63514439"] 
 
 #product_family can be "csd" / "prov"
 product_family = "CSD" # (e.g., The product_family must be one of: CSD, PROV)
@@ -18,9 +18,9 @@ es = {
     es_throughput_per_node      = 250
     es_iops_per_node            = 3000
     es_instance_type            = "t3.small.elasticsearch"
-    es_node_count               = 2
+    es_node_count               = 1
     es_zone_awareness_enabled   = true
-    es_az_count                 = 2
+    es_az_count                 = 1
     es_version                  = "7.10"
     es_domain_name              = "fabriziotest"
     AWS_ACCOUNT_NO              = "895697895152" 
