@@ -312,3 +312,46 @@ common_docker_image_versions = {
   opentelemetry-collector = "0.106.1"
 }
 
+custom_ingress = {
+  # App URLs. Each URL should map to the respective service. The format can vary, but it must contain the service keyword.
+  # <dns_domain> value will be appended after whatever you provide as a value here Ex: test-grafana.prov.delivery.hansencx.com
+  app_urls = {
+    grafana    = "fabriziotest-grafana.vm.delivery.hansencx.com"   
+    kibana     = "fabriziotest-kibana.vm.delivery.hansencx.com"    
+    jaeger     = "fabriziotest-jaeger.vm.delivery.hansencx.com"    
+    argocd     = "fabriziotest-argocd.vm.delivery.hansencx.com"    
+    prometheus = "fabriziotest-prometheus.vm.delivery.hansencx.com"
+  }
+
+  # albRecs here used for creating cognito app callback urls.
+  # Uncomment the product(s) and provide with the customized subdomain value completely except .<dns_domain> with comma(,) seperated for multiple
+  # Allowed App callback urls gets created based on customized values Ex: https://catalog-ui-cluster.prov.delivery.hansencx.com/oauth2/idpresponse
+  albRecs = {
+    # Catalog = [] # <dns_domain> value will be appended after whatever you give here 
+    # CPQ     = []
+    # PI      = []
+    # CS      = []
+    # OM      = []
+    # INF     = []
+    # TL      = []  
+    # PROV    = []
+  }
+  # nlbRecs here used for creating cognito api callback urls.
+  # Uncomment the product(s) and provide with the customized record name completely except .<dns_domain> with comma(,) seperated for multiple
+  # Allowed Api callback urls gets created based on customized values Ex: https://catalog-api-cluster.prov.delivery.hansencx.com/oauth2/idpresponse  
+  nlbRecs = {
+    # Catalog = [] # <dns_domain> value will be appended after whatever you give here
+    # CPQ     = []
+    # PI      = []
+    # CS      = []
+    # OM      = []
+    # INF     = []
+    # TL      = []
+    # PROV    = []
+  }
+  # Uncomment and replace with actual full signout URLs data with proper postfix value relevant to your environment only for PROV
+  signout_urls = {
+    # PROV = ["https://replace-with-workflow-signout-url", "https://replace-with-operations-signout-url"]
+  }
+}
+
