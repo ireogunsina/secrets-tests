@@ -355,3 +355,4 @@ custom_ingress = {
   }
 }
 
+external_cidrs = [ "10.0.0.0/8" ] 
