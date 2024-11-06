@@ -161,7 +161,7 @@ deploy_spark               = false
 deploy_windows_node = false
 
 # to store helm charts in s3 bucket
-helm_s3_bucket = "vm-om-helm"
+helm_s3_bucket = "vm-om-helm-nv"
 
 node_group_iops        = 3000
 node_group_throughput  = 250
