@@ -4,7 +4,7 @@ region             = "us-east-1"
 aws_account_number = "895697895152"
 dns_domain         = "vm.delivery.hansencx.com"
 hosted_zone_id     = "Z0362731FLNB9XG7BLIO"
-secret_file_name   = "REPLACE_THIS_WITH_TLS_SECRET_FILE"
+secret_file_name   = "wildcard_vm_delivery_hansencx_com.yaml"
 aws_provider       = "default"
 key_name           = "VirginMediaANEP"
 
