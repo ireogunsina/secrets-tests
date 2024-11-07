@@ -149,6 +149,10 @@ serviceaccounts = [
     namespace      = "cs"
   },
   {
+    serviceaccount = "tl-sa"
+    namespace      = "tl"
+  },
+  {
     serviceaccount = "informatics-sa"
     namespace      = "informatics"
   }
