@@ -18,7 +18,7 @@ availability_zones = [ "us-east-1a", "us-east-1c" ]  # List of availability zone
 external_cidrs = [ "10.0.0.0/8" ]  # e.g., ["10.0.0.0/32" , "10.0.0.1/32"] or []
 
 # RDS Configuration
-create_parameter_group = false  # Boolean to create a parameter group (false means it will not be created)
+create_parameter_group = true  # Boolean to create a parameter group (false means it will not be created)
 bastion_sg_id           = "sg-08b439c941a9b9f44"  # Security group ID for the bastion (e.g., sg-041e847022f09826a)
 
 rds_performance_insights_enabled = true  # Boolean to enable performance insights for RDS (true or false)
