@@ -22,7 +22,7 @@ create_parameter_group = true  # Boolean to create a parameter group (false mean
 bastion_sg_id           = "sg-08b439c941a9b9f44"  # Security group ID for the bastion (e.g., sg-041e847022f09826a)
 
 rds_performance_insights_enabled = true  # Boolean to enable performance insights for RDS (true or false)
-instance_type                   = "db.t4g.micro"  # Instance type for RDS (e.g., db.t4g.medium)
+instance_type                   = "db.t4g.medium"  # Instance type for RDS (e.g., db.t4g.medium)
 
 master_username = "fabriziotest_dba"  # Master username for RDS (e.g., db_master)
 master_password = "w0tnopasswd?"  # Master password for RDS (e.g., 8PC2^MZ=!^5wR69(")
