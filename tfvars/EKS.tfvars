@@ -228,6 +228,7 @@ eks_node_groups = {
     k8s_labels = {
       cluster     = "fabriziotest"
       reservation = "worker"
+      app         = "monitoring"
     }
   }
 }
