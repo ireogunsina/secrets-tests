@@ -27,5 +27,5 @@ instance_type                   = "db.t4g.micro"  # Instance type for RDS (e.g.,
 master_username = "fabriziotest_dba"  # Master username for RDS (e.g., db_master)
 master_password = "w0tnopasswd?"  # Master password for RDS (e.g., 8PC2^MZ=!^5wR69(")
 
-engine_version = "14.9"  # RDS engine version (e.g., 12.16)
+engine_version = "12.16"  # RDS engine version (e.g., 12.16)
 
