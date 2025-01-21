@@ -1,6 +1,6 @@
 aws_provider = "default" # (e.g., "default")
 region       = "us-east-1"   # (e.g., "us-east-1")
-vpc_id = ["vpc-092c03af042c4e5b9"] # ["vpc-0xxxxxxxxxxxxxx"]
+vpc_id = "vpc-092c03af042c4e5b9" # ["vpc-0xxxxxxxxxxxxxx"]
 
 #Please Make sure, mskPrivateSubnetIds = number_of_kafka_broker_nodes
 mskPrivateSubnetIds =  ["subnet-0956c124b27675154", "subnet-07ce1229ad12b5cbd", "subnet-076dff0348cc6ca95"] # ["subnet-02xxxxxxxx6", "subnet-0bxxxxxxxxad", "subnet-0bxxxxxxxxad"]
