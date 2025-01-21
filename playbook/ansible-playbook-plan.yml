@@ -1,0 +1,24 @@
+---
+- name: Run Terraform modules in sequence
+  hosts: localhost
+  tasks:
+
+    - name: Initialize RDS-AuroraPostgreSQL module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-rds-pg.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../rdsAuroraPostgreSql
+    - name: Plan RDS-AuroraPostgreSQL module
+      cloud.terraform.terraform:
+        project_path: ../../rdsAuroraPostgreSql
+        workspace: vmanep-use1-dev3-csf
+        state: planned
+        plan_file: terraform.tfplan
+        variables_files: ../environment/tfvars/RDS-AuroraPostgreSQL.tfvars
+      register: rdsAuroraPostgreSql_outputs
+    - debug: var=rdsAuroraPostgreSql_outputs.stdout_lines
