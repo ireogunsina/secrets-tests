@@ -34,37 +34,37 @@ vpc_info = {
   eks_security_group_id            = "sg-0b2bbd5bb231e02c1" # "sg-0xxxxxxxxxxxxxx"
 }
 
-#Use "MSK" or "test-confluent" based on the requirement
-kafka_conn_id = "MSK"
-
-kafka_conn_info = {
-  "MSK" = {
-    kafka_provider           = "REPLACE_THIS_WITH_KAFKA_PROVIDER" # "MSK"
-    msk_security_group       = "REPLACE_THIS_WITH_KAFKA_SECURITY_GROUP" # "sg-0xxxxxxxxxxxxxx"
-    bootstrap_brokers_tls    = "REPLACE_THIS_WITH_KAFKA_BROKER_URLS_WITH_COMMA_SEPERATED_VALUES" # "b-2.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:9094,b-3.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:9094,b-1.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:9094"
-    access_key               = "N/A"
-    secret_access_key        = "N/A"
-    zookeeper_connect_string = "null" # "z-2.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:2181,z-1.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:2181,z-3.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:2181" or "null"
-  }
-  "test-confluent" = {
-    kafka_provider           = "Confluent"
-    msk_security_group       = "N/A"
-    bootstrap_brokers_tls    = "REPLACE_THIS_WITH_BOOTSTRAP_BROKER_TLS"
-    access_key               = "REPLACE_THIS_WITH_ACCESS_KEY"
-    secret_access_key        = "REPLACE_THIS_WITH_SECRET_ACCESS_KEY"
-    zookeeper_connect_string = "null"
-  }
-}
-
-es_info = {
-  es_security_group  = ["REPLACE_THIS_WITH_COMMA_SEPARATED_ELASTIC_SEARCH_SECURITY_GROUP_ID"] # ["sg-0xxxxxxxxxxxxxx", "sg-0xxxxxxxxxxxxxx"] or ["sg-0xxxxxxxxxxxxxx"]
-  es_log_endpoint    = "REPLACE_THIS_WITH_ELASTIC_SEARCH_ENDPOINT" # "vpc-demo-es-logger1-demo.us-east-1.es.amazonaws.com"
-  es_app_endpoint    = "null" # "vpc-demo-es-testing-demo.us-east-1.es.amazonaws.com" or "null"
-}
-
-#Provide if any Postgres security group is available, if not keep it as "null"
-pg_rds_security_group = "null"
-
+##Use "MSK" or "test-confluent" based on the requirement
+#kafka_conn_id = "MSK"
+#
+#kafka_conn_info = {
+#  "MSK" = {
+#    kafka_provider           = "REPLACE_THIS_WITH_KAFKA_PROVIDER" # "MSK"
+#    msk_security_group       = "REPLACE_THIS_WITH_KAFKA_SECURITY_GROUP" # "sg-0xxxxxxxxxxxxxx"
+#    bootstrap_brokers_tls    = "REPLACE_THIS_WITH_KAFKA_BROKER_URLS_WITH_COMMA_SEPERATED_VALUES" # "b-2.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:9094,b-3.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:9094,b-1.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:9094"
+#    access_key               = "N/A"
+#    secret_access_key        = "N/A"
+#    zookeeper_connect_string = "null" # "z-2.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:2181,z-1.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:2181,z-3.demo.vrzrg1.c20.kafka.us-east-1.amazonaws.com:2181" or "null"
+#  }
+#  "test-confluent" = {
+#    kafka_provider           = "Confluent"
+#    msk_security_group       = "N/A"
+#    bootstrap_brokers_tls    = "REPLACE_THIS_WITH_BOOTSTRAP_BROKER_TLS"
+#    access_key               = "REPLACE_THIS_WITH_ACCESS_KEY"
+#    secret_access_key        = "REPLACE_THIS_WITH_SECRET_ACCESS_KEY"
+#    zookeeper_connect_string = "null"
+#  }
+#}
+#
+#es_info = {
+#  es_security_group  = ["REPLACE_THIS_WITH_COMMA_SEPARATED_ELASTIC_SEARCH_SECURITY_GROUP_ID"] # ["sg-0xxxxxxxxxxxxxx", "sg-0xxxxxxxxxxxxxx"] or ["sg-0xxxxxxxxxxxxxx"]
+#  es_log_endpoint    = "REPLACE_THIS_WITH_ELASTIC_SEARCH_ENDPOINT" # "vpc-demo-es-logger1-demo.us-east-1.es.amazonaws.com"
+#  es_app_endpoint    = "null" # "vpc-demo-es-testing-demo.us-east-1.es.amazonaws.com" or "null"
+#}
+#
+##Provide if any Postgres security group is available, if not keep it as "null"
+#pg_rds_security_group = "null"
+#
 #Provide if any Amazon memory db security group is available, if not keep it as "null"
 amz_mem_db_security_group = "null"
 
@@ -321,3 +321,4 @@ eks_node_groups = {
 # refer confluence page for more details on how to use profile_size
 profile_size = "one"
 
+# BEGIN ANSIBLE MANAGED BLOCK
