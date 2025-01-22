@@ -11,11 +11,7 @@ external_cidrs = [ "10.143.93.32/32", "172.16.224.0/19" ]
 
 #product_family can be "csd" / "prov"
 product_family = "CSD" # (e.g., The product_family must be one of: CSD, PROV)
-
-#for CSD, es_version = 7.10
-#for prov, es_version = OpenSearch_1.2
-#Make Sure, es_node_count = es_az_count = no. of subnet_ids
-es_version = "OpeneSearch_2.13"
+base_product = "csd"
 
 es = {
     config = {
