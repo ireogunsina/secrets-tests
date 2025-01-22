@@ -3,6 +3,24 @@
   hosts: localhost
   tasks:
 
+    - name: Initialize EKS module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-eks.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../eks
+    - name: Apply EKS module
+      cloud.terraform.terraform:
+        project_path: ../../eks
+        workspace: vmanep-use1-dev3-csf
+        state: absent
+        variables_files: ../environment/tfvars/EKS.tfvars
+      register: eks_outputs
+    - debug: var=eks_outputs.stdout_lines
     - name: Initialize Elasticsearch module
       command: >
         terraform init
