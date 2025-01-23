@@ -255,6 +255,7 @@ eks_node_groups = {
     version             = "1.30"
     ami_release_version = "1.30.4-20240924"
     k8s_labels = {
+      app         = "monitoring"
       cluster     = "vmanep-use1-dev3-csf-eks"
       reservation = "worker"
     }
