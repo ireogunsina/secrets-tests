@@ -21,3 +21,57 @@
         variables_files: ../environment/tfvars/EKS.tfvars
       register: eks_outputs
     - debug: var=eks_outputs.stdout_lines
+    - name: Initialize Elasticsearch module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-es.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../es_os
+    - name: Apply Elasticsearch module
+      cloud.terraform.terraform:
+        project_path: ../../es_os
+        workspace: vmanep-use1-dev3-csf
+        state: absent
+        variables_files: ../environment/tfvars/Elasticsearch.tfvars
+      register: es_os_outputs
+    - debug: var=es_os_outputs.stdout_lines
+    - name: Initialize MSK module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-msk.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../msk
+    - name: Apply MSK module
+      cloud.terraform.terraform:
+        project_path: ../../msk
+        workspace: vmanep-use1-dev3-csf
+        state: absent
+        variables_files: ../environment/tfvars/MSK.tfvars
+      register: msk_outputs
+    - debug: var=msk_outputs.stdout_lines
+    - name: Initialize RDS-AuroraPostgreSQL module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-rds-pg.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../rdsAuroraPostgreSql
+    - name: Apply RDS-AuroraPostgreSQL module
+      cloud.terraform.terraform:
+        project_path: ../../rdsAuroraPostgreSql
+        workspace: vmanep-use1-dev3-csf
+        state: absent
+        variables_files: ../environment/tfvars/RDS-AuroraPostgreSQL.tfvars
+      register: rdsAuroraPostgreSql_outputs
+    - debug: var=rdsAuroraPostgreSql_outputs.stdout_lines

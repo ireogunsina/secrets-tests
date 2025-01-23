@@ -3,6 +3,83 @@
   hosts: localhost
   tasks:
 
+    - name: Initialize RDS-AuroraPostgreSQL module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-rds-pg.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../rdsAuroraPostgreSql
+    - name: Apply RDS-AuroraPostgreSQL module
+      cloud.terraform.terraform:
+        project_path: ../../rdsAuroraPostgreSql
+        workspace: vmanep-use1-dev3-csf
+        state: present         
+        variables_files: ../environment/tfvars/RDS-AuroraPostgreSQL.tfvars
+      register: rdsAuroraPostgreSql_outputs
+    - debug: var=rdsAuroraPostgreSql_outputs.stdout_lines
+    - name: Initialize MSK module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-msk.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../msk
+    - name: Apply MSK module
+      cloud.terraform.terraform:
+        project_path: ../../msk
+        workspace: vmanep-use1-dev3-csf
+        state: present        
+        variables_files: ../environment/tfvars/MSK.tfvars
+      register: msk_outputs
+    - debug: var=msk_outputs.stdout_lines
+    - name: Initialize Elasticsearch module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-es.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../es_os
+    - name: Apply Elasticsearch module
+      cloud.terraform.terraform:
+        project_path: ../../es_os
+        workspace: vmanep-use1-dev3-csf
+        state: present
+        variables_files: ../environment/tfvars/Elasticsearch.tfvars
+      register: es_os_outputs
+    - debug: var=es_os_outputs.stdout_lines
+    - name: Create eks.tfvars with module outputs
+      blockinfile:
+        path: ../tfvars/EKS.tfvars
+        block: |
+
+          kafka_conn_info = {
+            "MSK" = {
+              kafka_provider        = "MSK"
+              msk_security_group    = "{{ msk_outputs.outputs.msk_security_group.value }}"
+              bootstrap_brokers_tls = "{{ msk_outputs.outputs.bootstrap_brokers_tls.value }}"
+              access_key            = "N/A"
+              secret_access_key     = "N/A"
+              zookeeper_connect_string = "{{ msk_outputs.outputs.zookeeper_connect_string.value }}"
+            }
+          }
+
+          es_info = {
+            es_security_group  = ["{{ es_os_outputs.outputs.es_security_group.value }}"]
+            es_log_endpoint    = "{{ es_os_outputs.outputs.endpoint.value }}"
+            es_app_endpoint    = "null"
+          }
+
+          pg_rds_security_group = "{{ rdsAuroraPostgreSql_outputs.outputs['rds-aurora-pg-sg'].value }}"
     - name: Initialize EKS module
       command: >
         terraform init
