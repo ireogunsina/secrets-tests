@@ -9,7 +9,7 @@ aws_provider       = "default"
 key_name           = "VirginMediaANEP"
 
 # refer confluence page for more details on how to use networking_type
-networking_type = "default" # custom_networking, default
+networking_type = "custom_networking" # custom_networking, default
 
 #Refer variables.tf for more specific details
 product        = "CSF" # e.g., The product must be one of: PI, CPQ, CS, OM, Catalog, INF, PROV, TL, CSF
