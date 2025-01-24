@@ -98,3 +98,57 @@
         variables_files: ../environment/tfvars/EKS.tfvars
       register: eks_outputs
     - debug: var=eks_outputs.stdout_lines
+    - name: Initialize Route53 module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-route53.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../route53
+    - name: Apply Route53 module
+      cloud.terraform.terraform:
+        project_path: ../../route53
+        workspace: vmanep-use1-dev3-csf
+        state: present
+        variables_files: ../environment/tfvars/Route53.tfvars
+      register: route53_outputs
+    - debug: var=route53_outputs.stdout_lines
+    - name: Initialize EFS module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-efs.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../efs
+    - name: Apply EFS module
+      cloud.terraform.terraform:
+        project_path: ../../efs
+        workspace: vmanep-use1-dev3-csf
+        state: present
+        variables_files: ../environment/tfvars/EFS.tfvars
+      register: efs_outputs
+    - debug: var=efs_outputs.stdout_lines
+    - name: Initialize ArgoCD module
+      command: >
+        terraform init
+        -backend-config="bucket=vmanep-use1-terraform-creation"
+        -backend-config="key=state-argocd.tfstate"
+        -backend-config="region=us-east-1"
+        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
+      args:
+        chdir: ../../argocd
+    - name: Apply ArgoCD module
+      cloud.terraform.terraform:
+        project_path: ../../argocd
+        workspace: vmanep-use1-dev3-csf
+        state: present
+        variables_files: ../environment/tfvars/ArgoCD.tfvars
+      register: argocd_outputs
+    - debug: var=argocd_outputs.stdout_lines
