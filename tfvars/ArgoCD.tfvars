@@ -2,7 +2,7 @@ aws_provider = "default" # (e.g., "default")
 region       = "us-east-1"   # (e.g., "us-east-1")
 
 # The name of the Kubernetes cluster where ArgoCD will be deployed.
-cluster_name   = "vmanep-use1-devv3-csf-eks" # (e.g., "test-cluster")
+cluster_name   = "vmanep-use1-dev3-csf-eks" # (e.g., "test-cluster")
 dns_domain     = "vm.delivery.hansencx.com" # (e.g., "xxx.xxxxx.hansencx.com)
 
 #The argocd va;ue should  be same as eks config tfvars file
