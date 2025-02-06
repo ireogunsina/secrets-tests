@@ -28,8 +28,8 @@ cluster_owner_details = {
 
 vpc_info = {
   vpc_id                           = "vpc-092c03af042c4e5b9" # "vpc-0xxxxxxxxxxxxxx"
-  eks_private_subnet_ids           = ["subnet-0956c124b27675154", "subnet-07ce1229ad12b5cbd", "subnet-076dff0348cc6ca95"] # this is where the EKS nodes + masters are going to go
-  eks_secondary_private_subnet_ids = ["subnet-0564ae7def8f3893e", "subnet-0ace894e8491ae6b8", "subnet-0dfc3822440d99096"] # this where the pods are going to go
+  eks_secondary_private_subnet_ids = ["subnet-0956c124b27675154", "subnet-07ce1229ad12b5cbd", "subnet-076dff0348cc6ca95"] # this is where the EKS nodes + masters are going to go
+  eks_private_subnet_ids           = ["subnet-0564ae7def8f3893e", "subnet-0ace894e8491ae6b8", "subnet-0dfc3822440d99096"] # this where the pods are going to go
   eks_public_subnet_ids            = [] # used only if we need to reach EKS from the outside
   eks_security_group_id            = "sg-0b2bbd5bb231e02c1" # this is going to be the EKS's secondary security group
 }
