@@ -11,8 +11,6 @@ custom_ingress = {
     argocd     = "argocd-vmanep-use1-dev3-csf"     # Example: test-argocd or argocd-domain
   }
 }
-# Elasticsearch Application Endpoint Configuration
-es_log_endpoint = "vpc-vmanep-use1-dev3-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com" #(e.g., vpc-es-xxxx-nmcd3jxxxxxxxxxxxdcjg7za.us-east-1.es.amazonaws.com)
 
 # argocd ldap configuration
 ldap_info = {
@@ -21,3 +19,8 @@ ldap_info = {
   ldap_user_baseDN  = "n/a"  # (e.g., OU=Users,OU=xxx,OU=Hansen,DC=hsxxxh,DC=xxx)
   ldap_group_baseDN = "n/a" # (e.g., OU=Hansen,DC=hxxxh,DC=xxx) 
 }
+
+# BEGIN ANSIBLE MANAGED BLOCK
+es_log_endpoint = "vpc-vmanep-use1-dev3-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com" #(e.g., vpc-es-xxxx-nmcd3jxxxxxxxxxxxdcjg7za.us-east-1.es.amazonaws.com)
+# END ANSIBLE MANAGED BLOCK
+
