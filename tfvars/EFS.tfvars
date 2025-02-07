@@ -48,3 +48,6 @@ performance_mode = "generalPurpose"  # Performance mode for EFS (e.g., generalPu
 throughput_mode  = "bursting"   # Throughput mode for EFS (e.g., bursting or provisioned)
 encrypted        = true   # Encryption setting for EFS (true or false)
 
+# BEGIN ANSIBLE MANAGED BLOCK
+node_security_group_id = "sg-02055853f7b9ec5fe"
+# END ANSIBLE MANAGED BLOCK
