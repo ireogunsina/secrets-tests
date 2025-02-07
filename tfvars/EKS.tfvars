@@ -328,19 +328,19 @@ profile_size = "one"
 kafka_conn_info = {
   "MSK" = {
     kafka_provider        = "MSK"
-    msk_security_group    = "sg-0f96a76decd462bfe"
-    bootstrap_brokers_tls = "b-1.cnvmanepuse1dev3csfms.df0bmx.c16.kafka.us-east-1.amazonaws.com:9094,b-2.cnvmanepuse1dev3csfms.df0bmx.c16.kafka.us-east-1.amazonaws.com:9094,b-3.cnvmanepuse1dev3csfms.df0bmx.c16.kafka.us-east-1.amazonaws.com:9094"
+    msk_security_group    = "sg-0f0d74b7afc2dd4b5"
+    bootstrap_brokers_tls = "b-1.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094,b-2.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094,b-3.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094"
     access_key            = "N/A"
     secret_access_key     = "N/A"
-    zookeeper_connect_string = "z-1.cnvmanepuse1dev3csfms.df0bmx.c16.kafka.us-east-1.amazonaws.com:2181,z-2.cnvmanepuse1dev3csfms.df0bmx.c16.kafka.us-east-1.amazonaws.com:2181,z-3.cnvmanepuse1dev3csfms.df0bmx.c16.kafka.us-east-1.amazonaws.com:2181"
+    zookeeper_connect_string = "z-1.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181,z-2.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181,z-3.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181"
   }
 }
 
 es_info = {
-  es_security_group  = ["sg-0e2b1a2f53bf1df04"]
+  es_security_group  = ["sg-063bef96e483d3e72"]
   es_log_endpoint    = "vpc-vmanep-use1-dev3-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com"
   es_app_endpoint    = "null"
 }
 
-pg_rds_security_group = "sg-04fa042f2fda64c1a"
+pg_rds_security_group = "sg-01cbe7815b79ff630"
 # END ANSIBLE MANAGED BLOCK

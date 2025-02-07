@@ -49,5 +49,6 @@ throughput_mode  = "bursting"   # Throughput mode for EFS (e.g., bursting or pro
 encrypted        = true   # Encryption setting for EFS (true or false)
 
 # BEGIN ANSIBLE MANAGED BLOCK
-node_security_group_id = "sg-02055853f7b9ec5fe"
+
+node_security_group_id = "sg-00bb181ae03ef2e18"
 # END ANSIBLE MANAGED BLOCK
