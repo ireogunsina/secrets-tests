@@ -7,7 +7,7 @@ vpc_info = {
   vpc_id                           = "vpc-092c03af042c4e5b9" # "vpc-0xxxxxxxxxxxxxx"
   eks_private_subnet_ids           = ["subnet-0956c124b27675154", "subnet-07ce1229ad12b5cbd", "subnet-076dff0348cc6ca95"]
   eks_public_subnet_ids    = []
-  eks_security_group_id    = "sg-0031f742ba3896e95"  # Replace with your security group ID
+  eks_security_group_id    = "sg-0b2bbd5bb231e02c1"  # Replace with your security group ID
 }
 
 # EFS configuration
