@@ -7,7 +7,7 @@ mskPrivateSubnetIds =  ["subnet-0956c124b27675154", "subnet-07ce1229ad12b5cbd", 
 
 # This variable is used to allow access to the msk from the specified CIDR blocks. 
 # If you want to allow access from specific IP addresses fill it in or set this variable to an empty list.
-external_cidrs = [ "10.143.93.32/32", "172.16.224.0/19" ]
+external_cidrs = ["10.39.250.0/24", "10.45.10.0/24", "10.50.250.0/24", "10.52.250.0/24", "10.53.250.0/24", "10.100.8.0/23", "10.152.10.0/24", "10.153.10.0/24"]
 
 #While upgrading, msk_cluster_name
 #Please Make sure, mskPrivateSubnetIds = number_of_kafka_broker_nodes
