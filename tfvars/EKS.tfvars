@@ -342,5 +342,5 @@ es_info = {
   es_app_endpoint    = "null"
 }
 
-pg_rds_security_group = "sg-01cbe7815b79ff630"
+pg_rds_security_group = "sg-06f96f4615026bca2"
 # END ANSIBLE MANAGED BLOCK
