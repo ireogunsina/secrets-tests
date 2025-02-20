@@ -27,4 +27,4 @@ instance_type                   = "db.t4g.medium"  # Instance type for RDS (e.g.
 master_username = "dba"  # Master username for RDS (e.g., db_master)
 master_password = "w0tnopasswd?"  # Master password for RDS (e.g., 8PC2^MZ=!^5wR69(")
 
-engine_version = "12.16"  # RDS engine version (e.g., 12.16)
+engine_version = "14.13"  # RDS engine version (e.g., 12.16)
