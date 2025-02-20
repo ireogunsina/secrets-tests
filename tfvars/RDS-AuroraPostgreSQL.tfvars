@@ -15,7 +15,7 @@ availability_zones = [ "us-east-1a", "us-east-1b", "us-east-1c" ]  # List of ava
 
 # This variable is used to allow access to the database from the specified CIDR blocks. 
 # If you want to allow access from specific IP addresses fill it in or set this variable to an empty list.
-external_cidrs = ["10.39.250.0/24", "10.45.10.0/24", "10.50.250.0/24", "10.52.250.0/24", "10.53.250.0/24", "10.100.8.0/23", "10.152.10.0/24", "10.153.10.0/24"]
+external_cidrs = ["10.39.250.0/24", "10.45.10.0/24", "10.50.250.0/24", "10.52.250.0/24", "10.53.250.0/24", "10.100.8.0/23", "10.152.10.0/24", "10.153.10.0/24", "10.143.94.30/32"]
 
 # RDS Configuration
 create_parameter_group = true  # Boolean to create a parameter group (true means it will be created)

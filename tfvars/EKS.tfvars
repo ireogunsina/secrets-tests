@@ -72,7 +72,7 @@ amz_mem_db_security_group = "null"
 # For example, you can set values in list of strings ["10.0.0.0/32", "10.0.0.1/32"] or set empty list []
 # For this to work, either the infra resources should be within the VPC or else VPC peered with the other.
 
-external_cidrs = ["10.39.250.0/24", "10.45.10.0/24", "10.50.250.0/24", "10.52.250.0/24", "10.53.250.0/24", "10.100.8.0/23", "10.152.10.0/24", "10.153.10.0/24"]
+external_cidrs = ["10.39.250.0/24", "10.45.10.0/24", "10.50.250.0/24", "10.52.250.0/24", "10.53.250.0/24", "10.100.8.0/23", "10.152.10.0/24", "10.153.10.0/24", "10.143.94.30/32"]
 
 # map_roles can be customized to user requirement in below provided format. It is added to aws-auth configmap in the cluster.
 map_roles = [
