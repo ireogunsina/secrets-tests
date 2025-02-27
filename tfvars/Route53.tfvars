@@ -39,7 +39,7 @@ custom_ingress = {
     CS      = ["cs-core-vmanep-use1-dev3-csf"]
     OM      = ["om-api-vmanep-use1-dev3-csf", "argocd-vmanep-use1-dev3-csf"]
     # INF     = []
-    TL      = ["dso-api-vmanep-use1-dev3-csf", "dso-api-query-vmanep-use1-dev3-csf", "dso-audit-vmanep-use1-dev3-csf", "dso-core-vmanep-use1-dev3-csf", "dso-notification-vmanep-use1-dev3-csf", "dso-notification-stub-vmanep-use1-dev3-csf"]
+    TL      = ["dso-api-vmanep-use1-dev3-csf", "dso-query-api-vmanep-use1-dev3-csf", "dso-audit-vmanep-use1-dev3-csf", "dso-core-vmanep-use1-dev3-csf", "dso-notification-vmanep-use1-dev3-csf", "dso-notification-stub-vmanep-use1-dev3-csf"]
     # PROV    = []
   }
   # Uncomment and replace with actual full signout URLs data with proper postfix value relevant to your environment only for PROV
