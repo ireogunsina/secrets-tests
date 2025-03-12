@@ -23,7 +23,7 @@ es = {
     es_node_count               = "2" # IT SHOULD BE SAME AS NO. OF SUBNETS YOU ARE USING (e.g., 3)
     es_zone_awareness_enabled   = true
     es_az_count                 = "2" # IT SHOULD BE SAME AS NO. OF SUBNETS YOU ARE USING  (e.g., 3)
-    es_domain_name              = "vmanep-use1-dev3-csf-es" # (e.g., "csf-es-cpq")
+    es_domain_name              = "vmanep-use1-qa5-csf-es" # (e.g., "csf-es-cpq")
     AWS_ACCOUNT_NO              = "895697895152" # (e.g., "123456789012")
     }
 }
@@ -33,7 +33,7 @@ csd_tags = {
     tags = {
     product_family   = "CSD" # (e.g., The product_family must be one of: CSD, PROV)
     product          = "CSF"   # (e.g., The product must be one of: PI, CPQ, CS, OM, Catalog, INF, PROV, TL)
-    environment      = "DEV"    # (e.g., The environment must be one of: PRD, DEV, UAT, TST, PERF, AUDIT)
+    environment      = "TST"    # (e.g., The environment must be one of: PRD, TST, UAT, TST, PERF, AUDIT)
     customer         = "VM"  # (e.g., HSN, VM, Telefonica etc)
     }
 }

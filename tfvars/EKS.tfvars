@@ -15,7 +15,7 @@ networking_type = "custom_networking" # custom_networking, default
 product        = "CSF" # e.g., The product must be one of: PI, CPQ, CS, OM, Catalog, INF, PROV, TL, CSF
 schedule       = "24x7" #IST-BH, GMT-BH, EST-BH, PST-BH, 24x7
 expiry_date    = "2030-12-31" # "2024-12-31"
-environment    = "DEV" # e.g., The environment must be one of: "PRD", "DEV", "UAT", "TST", "PERF", "AUDIT"
+environment    = "TST" # e.g., The environment must be one of: "PRD", "TST", "UAT", "TST", "PERF", "AUDIT"
 product_family = "CSD" # e.g., The product_family must be one of: CSD, PROV
 customer       = "VM" # "HSN"
 
@@ -190,11 +190,11 @@ custom_ingress = {
   # App URLs. Each URL should map to the respective service. The format can vary, but it must contain the service keyword.
   # <dns_domain> value will be appended after whatever you provide as a value here Ex: test-grafana.prov.delivery.hansencx.com
   app_urls = {
-    grafana    = "grafana-vmanep-use1-dev3-csf"    # Example: test-grafana or grafana-domain
-    kibana     = "kibana-vmanep-use1-dev3-csf"     # Example: test-grafana or kibana-domain
-    jaeger     = "jaeger-vmanep-use1-dev3-csf"     # Example: test-grafana or jaeger-domain
-    argocd     = "argocd-vmanep-use1-dev3-csf"     # Example: test-grafana or argocd-domain
-    prometheus = "prometheus-vmanep-use1-dev3-csf" # Example: test-grafana or prometheus-domain
+    grafana    = "grafana-vmanep-use1-qa5-csf"    # Example: test-grafana or grafana-domain
+    kibana     = "kibana-vmanep-use1-qa5-csf"     # Example: test-grafana or kibana-domain
+    jaeger     = "jaeger-vmanep-use1-qa5-csf"     # Example: test-grafana or jaeger-domain
+    argocd     = "argocd-vmanep-use1-qa5-csf"     # Example: test-grafana or argocd-domain
+    prometheus = "prometheus-vmanep-use1-qa5-csf" # Example: test-grafana or prometheus-domain
   }
 
   # albRecs here used for creating cognito app callback urls.
@@ -203,9 +203,9 @@ custom_ingress = {
   albRecs = {
     # Catalog = [] # <dns_domain> value will be appended after whatever you give here 
     # CPQ     = []
-    PI      = [ "pi-ui-vmanep-use1-dev3-csf" ]
+    PI      = [ "pi-ui-vmanep-use1-qa5-csf" ]
     # CS      = []
-    OM      = ["grafana-vmanep-use1-dev3-csf", "jaeger-vmanep-use1-dev3-csf", "kibana-vmanep-use1-dev3-csf", "prometheus-vmanep-use1-dev3-csf", "om-ui-oct-vmanep-use1-dev3-csf", "om-ui-runtime-vmanep-use1-dev3-csf", "om-ui-designtime-vmanep-use1-dev3-csf"]
+    OM      = ["grafana-vmanep-use1-qa5-csf", "jaeger-vmanep-use1-qa5-csf", "kibana-vmanep-use1-qa5-csf", "prometheus-vmanep-use1-qa5-csf", "om-ui-oct-vmanep-use1-qa5-csf", "om-ui-runtime-vmanep-use1-qa5-csf", "om-ui-designtime-vmanep-use1-qa5-csf"]
     # INF     = []
     # TL      = []  
     # PROV    = []
@@ -216,11 +216,11 @@ custom_ingress = {
   nlbRecs = {
     # Catalog = [] # <dns_domain> value will be appended after whatever you give here
     # CPQ     = []
-    PI      = ["pi-core-vmanep-use1-dev3-csf", "pi-history-vmanep-use1-dev3-csf"]
-    CS      = ["cs-core-vmanep-use1-dev3-csf"]
-    OM      = ["om-api-vmanep-use1-dev3-csf", "argocd-vmanep-use1-dev3-csf"]
+    PI      = ["pi-core-vmanep-use1-qa5-csf", "pi-history-vmanep-use1-qa5-csf"]
+    CS      = ["cs-core-vmanep-use1-qa5-csf"]
+    OM      = ["om-api-vmanep-use1-qa5-csf", "argocd-vmanep-use1-qa5-csf"]
     # INF     = []
-    TL      = ["dso-api-vmanep-use1-dev3-csf", "dso-query-api-vmanep-use1-dev3-csf", "dso-audit-vmanep-use1-dev3-csf", "dso-core-vmanep-use1-dev3-csf", "dso-notification-vmanep-use1-dev3-csf", "dso-notification-stub-vmanep-use1-dev3-csf"]
+    TL      = ["dso-api-vmanep-use1-qa5-csf", "dso-query-api-vmanep-use1-qa5-csf", "dso-audit-vmanep-use1-qa5-csf", "dso-core-vmanep-use1-qa5-csf", "dso-notification-vmanep-use1-qa5-csf", "dso-notification-stub-vmanep-use1-qa5-csf"]
     # PROV    = []
   }
   # Uncomment and replace with actual full signout URLs data with proper postfix value relevant to your environment only for PROV
@@ -230,7 +230,7 @@ custom_ingress = {
 }
 
 monitoring_model = "eks-prometheus"
-cluster_name     = "vmanep-use1-dev3-csf-eks"
+cluster_name     = "vmanep-use1-qa5-csf-eks"
 
 #Set to true if the product is "INF"; otherwise, set it to false
 deploy_spark               = false
@@ -256,7 +256,7 @@ eks_node_groups = {
     ami_release_version = "1.30.4-20240924"
     k8s_labels = {
       app         = "monitoring"
-      cluster     = "vmanep-use1-dev3-csf-eks"
+      cluster     = "vmanep-use1-qa5-csf-eks"
       reservation = "worker"
     }
   }
@@ -329,16 +329,16 @@ kafka_conn_info = {
   "MSK" = {
     kafka_provider        = "MSK"
     msk_security_group    = "sg-0f0d74b7afc2dd4b5"
-    bootstrap_brokers_tls = "b-1.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094,b-2.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094,b-3.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094"
+    bootstrap_brokers_tls = "b-1.cnvmanepuse1qa5csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094,b-2.cnvmanepuse1qa5csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094,b-3.cnvmanepuse1qa5csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:9094"
     access_key            = "N/A"
     secret_access_key     = "N/A"
-    zookeeper_connect_string = "z-1.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181,z-2.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181,z-3.cnvmanepuse1dev3csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181"
+    zookeeper_connect_string = "z-1.cnvmanepuse1qa5csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181,z-2.cnvmanepuse1qa5csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181,z-3.cnvmanepuse1qa5csfms.s8usig.c16.kafka.us-east-1.amazonaws.com:2181"
   }
 }
 
 es_info = {
   es_security_group  = ["sg-063bef96e483d3e72"]
-  es_log_endpoint    = "vpc-vmanep-use1-dev3-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com"
+  es_log_endpoint    = "vpc-vmanep-use1-qa5-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com"
   es_app_endpoint    = "null"
 }
 

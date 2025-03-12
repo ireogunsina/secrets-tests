@@ -13,7 +13,7 @@ vpc_info = {
 # EFS configuration
 efs_access_points = [
   {
-    name = "vmanep-use1-dev3-csf-access_point"  # Name for the EFS access point
+    name = "vmanep-use1-qa5-csf-access_point"  # Name for the EFS access point
     posix_user = {
       gid            = 1000          # POSIX group ID (e.g., 1000)
       uid            = 1000          # POSIX user ID (e.g., 1000)
@@ -33,7 +33,7 @@ efs_access_points = [
 # Tags
 product_family  = "CSD"   # Tag for product family (e.g., CSD)
 product         = "CSF"     # Tag for product (e.g., OM)
-environment     = "DEV"      # Tag for environment (e.g., DEV)
+environment     = "TST"      # Tag for environment (e.g., TST)
 customer        = "VM"    # Tag for customer (e.g., VM)
 schedule        = "24x7"          # Tag for schedule (e.g., IST-BH)
 expiry_date     = "2040-12-31"       # Tag for expiry date (e.g., 2024-12-31)
@@ -41,7 +41,7 @@ cluster_owner_details = {
   owner_names   = [ "CSF Customer DevOps" ]   # List of owner names
   alert_emails  = ["DL-ANEP-Devops@hansencx.com"]  # List of alert emails
 }
-cluster_name    = "vmanep-use1-dev3-csf-eks"  # Name of the cluster (e.g., csf-cpq)
+cluster_name    = "vmanep-use1-qa5-csf-eks"  # Name of the cluster (e.g., csf-cpq)
 
 # EFS settings
 performance_mode = "generalPurpose"  # Performance mode for EFS (e.g., generalPurpose or maxIO)

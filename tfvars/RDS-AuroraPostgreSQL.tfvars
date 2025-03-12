@@ -5,7 +5,7 @@ region        = "us-east-1"   # AWS region to deploy resources (e.g., us-east-1)
 # Common Configuration Tags
 product        = "CSF"        # Tag for product (e.g., OM)
 product_family = "CSD"      # Tag for product family (e.g., PROV)
-environment    = "DEV"         # Tag for environment (e.g., DEV)
+environment    = "TST"         # Tag for environment (e.g., TST)
 customer       = "VM"       # Tag for customer (e.g., VM)
 
 # VPC and Network Configuration

@@ -16,7 +16,7 @@ external_cidrs = ["10.39.250.0/24", "10.45.10.0/24", "10.50.250.0/24", "10.52.25
 
 msk = {
    config = {
-        msk_cluster_name = "vmanep-use1-dev3-csf-msk" # (e.g., "msk-csf-sample4-csd")
+        msk_cluster_name = "vmanep-use1-qa5-csf-msk" # (e.g., "msk-csf-sample4-csd")
         number_of_kafka_broker_nodes = "3" # (e.g., 3,2)
         instance_type = "kafka.t3.small" # (e.g., "kafka.m5.large")
         disk_size_per_broker = "10" # (e.g., 100)
@@ -34,7 +34,7 @@ csd_tags = {
     tags = {
     product_family   = "CSD" # (e.g., The product_family must be one of: CSD, PROV)
     product          = "CSF"   # (e.g., The product must be one of: PI, CPQ, CS, OM, Catalog, INF, PROV, TL)
-    environment      = "DEV"    # (e.g., The environment must be one of: PERF, DEV, PROV )
+    environment      = "TST"    # (e.g., The environment must be one of: PERF, TST, PROV )
     customer         = "VM"  # (e.g., HSN, VM, Telefonica etc)
     }
 }

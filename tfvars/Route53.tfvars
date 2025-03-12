@@ -1,7 +1,7 @@
 dns_domain     = "vm.delivery.hansencx.com"
 aws_provider   = "default"
 region         = "us-east-1"
-cluster_name   = "vmanep-use1-dev3-csf-eks"
+cluster_name   = "vmanep-use1-qa5-csf-eks"
 hosted_zone_id = "Z0362731FLNB9XG7BLIO"
 product        = "CSF"
 
@@ -9,11 +9,11 @@ custom_ingress = {
   # App URLs. Each URL should map to the respective service. The format can vary, but it must contain the service keyword.
   # <dns_domain> value will be appended after whatever you provide as a value here Ex: test-grafana.prov.delivery.hansencx.com
   app_urls = {
-    grafana    = "grafana-vmanep-use1-dev3-csf"    # Example: test-grafana or grafana-domain
-    kibana     = "kibana-vmanep-use1-dev3-csf"     # Example: test-grafana or kibana-domain
-    jaeger     = "jaeger-vmanep-use1-dev3-csf"     # Example: test-grafana or jaeger-domain
-    argocd     = "argocd-vmanep-use1-dev3-csf"     # Example: test-grafana or argocd-domain
-    prometheus = "prometheus-vmanep-use1-dev3-csf" # Example: test-grafana or prometheus-domain
+    grafana    = "grafana-vmanep-use1-qa5-csf"    # Example: test-grafana or grafana-domain
+    kibana     = "kibana-vmanep-use1-qa5-csf"     # Example: test-grafana or kibana-domain
+    jaeger     = "jaeger-vmanep-use1-qa5-csf"     # Example: test-grafana or jaeger-domain
+    argocd     = "argocd-vmanep-use1-qa5-csf"     # Example: test-grafana or argocd-domain
+    prometheus = "prometheus-vmanep-use1-qa5-csf" # Example: test-grafana or prometheus-domain
   }
 
   # albRecs here used for creating cognito app callback urls.
@@ -22,9 +22,9 @@ custom_ingress = {
   albRecs = {
     # Catalog = [] # <dns_domain> value will be appended after whatever you give here
     # CPQ     = []
-    PI      = [ "pi-ui-vmanep-use1-dev3-csf" ]
+    PI      = [ "pi-ui-vmanep-use1-qa5-csf" ]
     # CS      = []
-    OM      = ["grafana-vmanep-use1-dev3-csf", "jaeger-vmanep-use1-dev3-csf", "kibana-vmanep-use1-dev3-csf", "prometheus-vmanep-use1-dev3-csf", "om-ui-oct-vmanep-use1-dev3-csf", "om-ui-runtime-vmanep-use1-dev3-csf", "om-ui-designtime-vmanep-use1-dev3-csf"]
+    OM      = ["grafana-vmanep-use1-qa5-csf", "jaeger-vmanep-use1-qa5-csf", "kibana-vmanep-use1-qa5-csf", "prometheus-vmanep-use1-qa5-csf", "om-ui-oct-vmanep-use1-qa5-csf", "om-ui-runtime-vmanep-use1-qa5-csf", "om-ui-designtime-vmanep-use1-qa5-csf"]
     # INF     = []
     # TL      = []
     # PROV    = []
@@ -35,11 +35,11 @@ custom_ingress = {
   nlbRecs = {
     # Catalog = [] # <dns_domain> value will be appended after whatever you give here
     # CPQ     = []
-    PI      = ["pi-core-vmanep-use1-dev3-csf", "pi-history-vmanep-use1-dev3-csf"]
-    CS      = ["cs-core-vmanep-use1-dev3-csf"]
-    OM      = ["om-api-vmanep-use1-dev3-csf", "argocd-vmanep-use1-dev3-csf"]
+    PI      = ["pi-core-vmanep-use1-qa5-csf", "pi-history-vmanep-use1-qa5-csf"]
+    CS      = ["cs-core-vmanep-use1-qa5-csf"]
+    OM      = ["om-api-vmanep-use1-qa5-csf", "argocd-vmanep-use1-qa5-csf"]
     # INF     = []
-    TL      = ["dso-api-vmanep-use1-dev3-csf", "dso-query-api-vmanep-use1-dev3-csf", "dso-audit-vmanep-use1-dev3-csf", "dso-core-vmanep-use1-dev3-csf", "dso-notification-vmanep-use1-dev3-csf", "dso-notification-stub-vmanep-use1-dev3-csf"]
+    TL      = ["dso-api-vmanep-use1-qa5-csf", "dso-query-api-vmanep-use1-qa5-csf", "dso-audit-vmanep-use1-qa5-csf", "dso-core-vmanep-use1-qa5-csf", "dso-notification-vmanep-use1-qa5-csf", "dso-notification-stub-vmanep-use1-qa5-csf"]
     # PROV    = []
   }
   # Uncomment and replace with actual full signout URLs data with proper postfix value relevant to your environment only for PROV

@@ -2,13 +2,13 @@ aws_provider = "default" # (e.g., "default")
 region       = "us-east-1"   # (e.g., "us-east-1")
 
 # The name of the Kubernetes cluster where ArgoCD will be deployed.
-cluster_name   = "vmanep-use1-dev3-csf-eks" # (e.g., "test-cluster")
+cluster_name   = "vmanep-use1-qa5-csf-eks" # (e.g., "test-cluster")
 dns_domain     = "vm.delivery.hansencx.com" # (e.g., "xxx.xxxxx.hansencx.com)
 
 #The argocd va;ue should  be same as eks config tfvars file
 custom_ingress = {
   app_urls = {
-    argocd     = "argocd-vmanep-use1-dev3-csf"     # Example: test-argocd or argocd-domain
+    argocd     = "argocd-vmanep-use1-qa5-csf"     # Example: test-argocd or argocd-domain
   }
 }
 
@@ -22,6 +22,6 @@ ldap_info = {
 
 # BEGIN ANSIBLE MANAGED BLOCK
 
-es_log_endpoint = "vpc-vmanep-use1-dev3-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com"
+es_log_endpoint = "vpc-vmanep-use1-qa5-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com"
 # END ANSIBLE MANAGED BLOCK
 
