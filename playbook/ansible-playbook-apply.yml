@@ -9,14 +9,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-rds-pg.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../rdsAuroraPostgreSql
     - name: Apply RDS-AuroraPostgreSQL module
       cloud.terraform.terraform:
         project_path: ../../rdsAuroraPostgreSql
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present         
         variables_files: ../environment/tfvars/RDS-AuroraPostgreSQL.tfvars
       register: rdsAuroraPostgreSql_outputs
@@ -27,14 +27,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-msk.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../msk
     - name: Apply MSK module
       cloud.terraform.terraform:
         project_path: ../../msk
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present        
         variables_files: ../environment/tfvars/MSK.tfvars
       register: msk_outputs
@@ -45,14 +45,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-es.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../es_os
     - name: Apply Elasticsearch module
       cloud.terraform.terraform:
         project_path: ../../es_os
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present
         variables_files: ../environment/tfvars/Elasticsearch.tfvars
       register: es_os_outputs
@@ -86,14 +86,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-eks.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../eks
     - name: Apply EKS module
       cloud.terraform.terraform:
         project_path: ../../eks
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present
         variables_files: ../environment/tfvars/EKS.tfvars
       register: eks_outputs
@@ -104,14 +104,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-route53.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../route53
     - name: Apply Route53 module
       cloud.terraform.terraform:
         project_path: ../../route53
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present
         variables_files: ../environment/tfvars/Route53.tfvars
       register: route53_outputs
@@ -128,14 +128,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-efs.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../efs
     - name: Apply EFS module
       cloud.terraform.terraform:
         project_path: ../../efs
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present
         variables_files: ../environment/tfvars/EFS.tfvars
       register: efs_outputs
@@ -152,14 +152,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-argocd.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../argocd
     - name: Apply ArgoCD module
       cloud.terraform.terraform:
         project_path: ../../argocd
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: present
         variables_files: ../environment/tfvars/ArgoCD.tfvars
       register: argocd_outputs

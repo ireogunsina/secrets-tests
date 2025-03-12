@@ -9,14 +9,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-rds-pg.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../rdsAuroraPostgreSql
     - name: Plan RDS-AuroraPostgreSQL module
       cloud.terraform.terraform:
         project_path: ../../rdsAuroraPostgreSql
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/RDS-AuroraPostgreSQL.tfvars
@@ -28,14 +28,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-msk.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../msk
     - name: Plan MSK module
       cloud.terraform.terraform:
         project_path: ../../msk
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/MSK.tfvars
@@ -47,14 +47,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-es.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../es_os
     - name: Plan Elasticsearch module
       cloud.terraform.terraform:
         project_path: ../../es_os
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/Elasticsearch.tfvars
@@ -66,14 +66,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-eks.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../eks
     - name: Plan EKS module
       cloud.terraform.terraform:
         project_path: ../../eks
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/EKS.tfvars
@@ -85,14 +85,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-route53.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../route53
     - name: Plan Route53 module
       cloud.terraform.terraform:
         project_path: ../../route53
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/Route53.tfvars
@@ -104,14 +104,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-efs.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../efs
     - name: Plan EFS module
       cloud.terraform.terraform:
         project_path: ../../efs
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/EFS.tfvars
@@ -123,14 +123,14 @@
         -backend-config="bucket=vmanep-use1-terraform-creation"
         -backend-config="key=state-argocd.tfstate"
         -backend-config="region=us-east-1"
-        -backend-config="workspace_key_prefix=vmanep-use1-dev3-csf"
+        -backend-config="workspace_key_prefix=vmanep-use1-qa5-csf"
         -backend-config="dynamodb_table=vmanep-use1-terraform-creation"
       args:
         chdir: ../../argocd
     - name: Plan ArgoCD module
       cloud.terraform.terraform:
         project_path: ../../argocd
-        workspace: vmanep-use1-dev3-csf
+        workspace: vmanep-use1-qa5-csf
         state: planned
         plan_file: terraform.tfplan
         variables_files: ../environment/tfvars/ArgoCD.tfvars
