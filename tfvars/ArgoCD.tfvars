@@ -22,6 +22,6 @@ ldap_info = {
 
 # BEGIN ANSIBLE MANAGED BLOCK
 
-es_log_endpoint = "vpc-vmanep-use1-qa5-csf-es-vtjcwcz3b3fctipoi43ne7mshm.us-east-1.es.amazonaws.com"
+es_log_endpoint = "vpc-vmanep-use1-qa5-csf-es-5iqnyo4bpdkysnnx2w5qn7mj3m.us-east-1.es.amazonaws.com"
 # END ANSIBLE MANAGED BLOCK
 

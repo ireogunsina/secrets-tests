@@ -50,5 +50,5 @@ encrypted        = true   # Encryption setting for EFS (true or false)
 
 # BEGIN ANSIBLE MANAGED BLOCK
 
-node_security_group_id = "sg-00bb181ae03ef2e18"
+node_security_group_id = "sg-06e80fc9d47355d91"
 # END ANSIBLE MANAGED BLOCK
