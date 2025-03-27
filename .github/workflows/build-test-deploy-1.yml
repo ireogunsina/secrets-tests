@@ -1,0 +1,187 @@
+name: Build Test and Deploy App
+
+on:
+  push:
+    branches:
+      - io-test
+    paths:
+      - '**/*.tfvars'
+      - '**/*.tf'
+  
+  pull_request:
+    branches:
+      - io-test
+
+permissions:
+  contents: read
+  id-token: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Install sudo
+        run: |
+            apt-get update && apt-get install sudo -y
+
+      - name: code check
+        uses: actions/checkout@v4
+        with:
+          branch: io-test
+
+      #- name: Install Latest libseccomp2
+      #  run: |
+           # Update package index
+      #     sudo apt-get update
+            
+           # Manually install the latest libseccomp2 package
+      #     sudo apt-get install -y wget
+           #wget http://ftp.debian.org/debian/pool/main/libs/libseccomp/libseccomp2_2.5.4-1_amd64.deb
+           #sudo dpkg -i libseccomp2_2.5.4-1_amd64.deb
+      #     sudo apt-get install -y --no-install-recommends libseccomp2
+
+           # Verify installation
+      #     dpkg -s libseccomp2 | grep Version
+
+      
+      - name: Install dependencies
+        run: |
+            sudo apt-get update
+            #sudo apt-get install curl build-essential git lsb-release unzip -y
+            sudo apt-get install unzip ca-certificates git -y
+
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'  # Use latest stable version 
+          
+          
+      #- name: Install hclfmt    
+      #  run: |
+      #    go install github.com/hashicorp/hcl/v2/cmd/hclfmt@latest
+      #    echo "$HOME/go/bin" >> $GITHUB_PATH 
+      #    export PATH=$PATH:$(go env GOPATH)/bin   
+
+
+      - name: setup TF
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.1.7"  
+
+
+      - name: Check pwd
+        run: |
+           pwd
+           ls -al
+     
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+         
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color 
+       
+      - run: echo ${{ steps.plan.outputs.stdout }}
+      - run: echo ${{ steps.plan.outputs.stderr }}
+      - run: echo ${{ steps.plan.outputs.exitcode }}
+
+
+
+    #  - name: loop over and validate
+    #    run: |
+    #      for file in ./tfvars/*.tfvars; do
+    #        echo "Validating $file..."
+    #        terraform plan -var-file="$file" -input=false -out=tfplan > /dev/null
+    #      done
+    #      echo "All .tfvars files validated successfully!"  
+
+
+      
+    #  - name: Install hcl2json
+    #    run: |
+    #     export GO111MODULE=on
+    #     export GOPROXY=direct
+    #     export GOSUMDB=off  # Disable Go module verification
+    #     go install github.com/tmccombs/hcl2json@latest
+    #     #go install github.com/tmccombs/hcl2json@v0.3.4
+    #     echo "$HOME/go/bin" >> $GITHUB_PATH    
+
+
+    #  - name: Terraform fmt
+    #    id: fmt
+    #    #run: terraform fmt -check
+    #    #run: terraform fmt -check **/*.tfvars
+    #    run: |
+    #     pwd
+    #     ls -al tfvars
+    #     for file in $(find ./tfvars -type f -name "*.tfvars"); do
+    #        echo "Checking format for $file"
+    #        terraform fmt -check -diff "$file" || exit 1
+    #      done
+    #    continue-on-error: true
+
+
+      #- name: Install Docker
+      #  run: |
+      #    # Update the package database
+      #    sudo apt-get update
+
+          # Install necessary packages for Docker installation
+      #    sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common gnupg
+
+          # Add the Docker GPG key
+      #    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+          # Add the Docker APT repository
+          #echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+      #    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" | sudo tee /etc/apt/sources.list.d/docker.list
+
+          # Update the package database again
+      #    sudo apt-get update
+
+          # Install the latest version of libseccomp2
+      #    sudo apt-get install -y libseccomp2
+
+          # Install Docker
+      #    sudo apt-get install -y  containerd.io docker-ce
+
+          # Verify Docker installation
+      #    docker --version
+
+
+      #- name: Build Docker image
+      #  run: |
+      #    docker build -t hcl2json-validator .
+
+
+      #- name: Validate .tfvars files
+      #  run: |
+      #    docker run --rm -v ${{ github.workspace }}:/workspace hcl2json-validator bash -c "
+      #    for file in $(find . -name '*.tfvars'); do
+      #      echo "Validating $file..."
+      #      hcl2json "$file" >/dev/null || (echo " ❌ Invalid HCL in $file" && exit 1)
+      #    done
+
+
+      
+      
+      
+
+  test-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sanity test
+        run: echo "Running code test!!!"
+  deploy-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sanity test
+        run: echo "Deploying code!!!"
