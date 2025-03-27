@@ -1,42 +1,48 @@
-name: Secrets Scanning with GitHub Actions and TruffleHog
-
-# Controls when the workflow will run
+name: Secrets Scanning
 on:
-# Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "io-test" ]
+    paths:
+      - '**/*.tfvars'
+      - '**/*.yml'
+      - '**/*.yaml'
+    branches: [ "main" ]
   pull_request:
     branches: [ "io-test" ]
 
-permissions:
-  contents: read
-  id-token: write
-  issues: write
-  pull-requests: write
+#permissions:
+#  contents: read
+#  id-token: write
+#  issues: write
+#  pull-requests: write
 
 jobs:
-  Trivy:
+  trivy:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    
-    
-
+      
     steps:
+      - name: Show OS Version
+        run: |
+          echo "🖥️ Operating System Information:"
+          uname -a  # Kernel and architecture info
+          cat /etc/os-release  # OS version details  
+
+
       - name: Some Checks
         run: |
           pwd
           ls -al 
           echo "|--- GITHUB.EVENT.PULL_REQUEST.HEAD.REF ${{ github.event.pull_request.head.ref }}"
           echo "|--- GITHUB REF ${{ github.ref }}"
-          
-     
+       
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+          #ref: ${{ github.event.pull_request.head.ref || github.ref }} # The branch, tag or SHA to checkout
+          ref: io-test
           #token: ${{ secrets.GH_CI_TOKEN }}
 
       - name: Run Trivy
@@ -64,4 +70,12 @@ jobs:
             echo -e "## Vulnerability Scan Results\n<details><summary>Details</summary>\n\n\`\`\`\n$(cat trivy-result.txt)\n\`\`\`\n</details>" > formatted-trivy-result.md
           else
             echo -e "## Vulnerability Scan Results\nNo vulnerabilities were detected." > formatted-trivy-result.md
-          fi  
+          fi
+          
+      - name: Comment PR with Trivy scan results
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: formatted-trivy-result.md
+          
+      - name: Clean up Trivy result file
+        run: rm -f trivy-result.txt formatted-trivy-result.md    
