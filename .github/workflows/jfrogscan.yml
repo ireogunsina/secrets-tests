@@ -29,9 +29,9 @@ jobs:
           uname -a  # Kernel and architecture info
           cat /etc/os-release  # OS version details  
 
-      - name: Install sudo
-        run: |
-            apt-get update && apt-get install sudo -y     
+    #  - name: Install sudo
+    #    run: |
+    #        apt-get update && apt-get install sudo -y     
 
       - name: Install dependencies
         run: |
