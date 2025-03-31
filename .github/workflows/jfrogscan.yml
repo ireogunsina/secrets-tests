@@ -9,15 +9,20 @@ on:
   pull_request:
     branches: [ "io-test" ]
 
-#permissions:
-#  contents: read
-#  id-token: write
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+  security-events: write
 #  issues: write
 #  pull-requests: write
 
 jobs:
-  trivy:
+  frogbot-scan:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [main]    
     defaults:
       run:
         shell: bash
@@ -60,6 +65,10 @@ jobs:
     
       - name: Get JFrog Access Token
         uses: hansen-technologies/hsn-github-actions/actions/jfrog/get-access-token@main
+
+
+      - name: Debug URL
+        run: echo "ACTIONS_ID_TOKEN_REQUEST_URL=${ACTIONS_ID_TOKEN_REQUEST_URL}"  
     
       - name: Check that environment variable is set
         run: |
@@ -70,3 +79,34 @@ jobs:
                 echo "JFrog Access token environment variable OK."
             fi
         shell: bash
+
+     # Generating a unique name for the Integration Configuration that will be created in the following step
+      - name: Generate unique OIDC config name
+        shell: bash
+        run: echo "OIDC_PROVIDER_NAME=oidc-integration-test-provider-$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
+
+
+      # Running frogbot with the OIDC integration
+      - name: Run Frogbot
+      #  uses: ./
+        uses: jfrog/frogbot@v2
+        env:
+          ACTIONS_STEP_DEBUG: true
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_USER: io_devops
+          JF_PASSWORD: ${{ secrets.JFROG_ACCESS_TOKEN }}
+          JF_ACCESS_TOKEN: ${{ secrets.JFROG_ACCESS_TOKEN }}
+          JF_GIT_TOKEN: ${{ secrets.JF_GIT_TOKEN }}
+          #JF_GIT_BASE_BRANCH: main
+          JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
+          #JF_PROJECT: hdso
+          #JF_WORKING_DIR: ./testdata/projects/noIssuesProject
+          JF_GIT_AGGREGATE_FIXES: "FALSE"
+          JF_FAIL: "FALSE"
+          JF_AVOID_EXTRA_MESSAGES: "TRUE"
+          #JFROG_CLI_LOG_LEVEL: "DEBUG"
+          JF_MIN_SEVERITY: "High"
+          JF_INCLUDE_ALL_VULNERABILITIES: "TRUE"
+        #with:
+        # oidc-provider-name: ${{ env.OIDC_PROVIDER_NAME }}   
