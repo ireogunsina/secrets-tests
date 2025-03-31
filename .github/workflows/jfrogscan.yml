@@ -1,4 +1,4 @@
-name: Scan Secrets with JFrog
+name: Scan Secrets with FrogBot
 on:
   push:
     paths:
