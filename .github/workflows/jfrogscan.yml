@@ -29,14 +29,15 @@ jobs:
           uname -a  # Kernel and architecture info
           cat /etc/os-release  # OS version details  
 
-
-      - name: Some Checks
+      - name: Install sudo
         run: |
-          pwd
-          ls -al 
-          echo "|--- GITHUB.EVENT.PULL_REQUEST.HEAD.REF ${{ github.event.pull_request.head.ref }}"
-          echo "|--- GITHUB REF ${{ github.ref }}"
-       
+            apt-get update && apt-get install sudo -y     
+
+      - name: Install dependencies
+        run: |
+            sudo apt-get update
+            sudo apt-get install curl build-essential git lsb-release unzip -y
+          
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,6 +45,13 @@ jobs:
           #ref: ${{ github.event.pull_request.head.ref || github.ref }} # The branch, tag or SHA to checkout
           ref: io-test
           #token: ${{ secrets.GH_CI_TOKEN }}
+
+      - name: Some Checks
+        run: |
+            pwd
+            ls -al 
+            echo "|--- GITHUB.EVENT.PULL_REQUEST.HEAD.REF ${{ github.event.pull_request.head.ref }}"
+            echo "|--- GITHUB REF ${{ github.ref }}"
 
       - name: Clear environment variable
         run: |
