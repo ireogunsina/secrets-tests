@@ -1,0 +1,64 @@
+name: Scan Secrets with JFrog
+on:
+  push:
+    paths:
+      - '**/*.tfvars'
+      - '**/*.yml'
+      - '**/*.yaml'
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "io-test" ]
+
+#permissions:
+#  contents: read
+#  id-token: write
+#  issues: write
+#  pull-requests: write
+
+jobs:
+  trivy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+      
+    steps:
+      - name: Show OS Version
+        run: |
+          echo "🖥️ Operating System Information:"
+          uname -a  # Kernel and architecture info
+          cat /etc/os-release  # OS version details  
+
+
+      - name: Some Checks
+        run: |
+          pwd
+          ls -al 
+          echo "|--- GITHUB.EVENT.PULL_REQUEST.HEAD.REF ${{ github.event.pull_request.head.ref }}"
+          echo "|--- GITHUB REF ${{ github.ref }}"
+       
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          #ref: ${{ github.event.pull_request.head.ref || github.ref }} # The branch, tag or SHA to checkout
+          ref: io-test
+          #token: ${{ secrets.GH_CI_TOKEN }}
+
+      - name: Clear environment variable
+        run: |
+          echo "JFROG_ACCESS_TOKEN=" >> $GITHUB_ENV
+        shell: bash
+    
+      - name: Get JFrog Access Token
+        uses: hansen-technologies/hsn-github-actions/actions/jfrog/get-access-token@main
+    
+      - name: Check that environment variable is set
+        run: |
+            if [ -z "$JFROG_ACCESS_TOKEN" ]; then
+                echo "ERROR: JFrog Access token environment variable is not set."
+                exit 1
+            else
+                echo "JFrog Access token environment variable OK."
+            fi
+        shell: bash
