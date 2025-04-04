@@ -136,3 +136,8 @@
         variables_files: ../environment/tfvars/ArgoCD.tfvars
       register: argocd_outputs
     - debug: var=argocd_outputs.stdout_lines
+
+    - name: Test password presence
+      vars:
+        username: "admin" 
+        password: "ThisIsAVeryStrooongPasswordIsn'tIT?"
