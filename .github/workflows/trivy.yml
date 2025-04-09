@@ -53,7 +53,8 @@ jobs:
         id: security
         with:
           scan-type: 'config'
-          scan-ref: ${{ inputs.terraform_working_directory }}
+          #scan-ref: ${{ inputs.terraform_working_directory }}
+          scan-ref: '.'  
           hide-progress: false
           #format: 'sarif'
           #output: 'trivy-results.sarif'
@@ -61,6 +62,7 @@ jobs:
           output: trivy-result.txt
           exit-code: 0
           ignore-unfixed: true
+          #vuln-type: 'os,library'  
           severity: 'CRITICAL,HIGH'
 
       - name: Check Trivy result file
