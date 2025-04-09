@@ -7,17 +7,20 @@ on:
       - '**/*.yaml'
     branches: [ "main" ]
   pull_request:
-    branches: [ "io-test" ]
+    branches: [ "main" ]
 
-#permissions:
-#  contents: read
-#  id-token: write
+permissions:
+  contents: read
+  id-token: write
 #  issues: write
 #  pull-requests: write
 
 jobs:
   trivy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [main]  
     defaults:
       run:
         shell: bash
@@ -42,7 +45,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           #ref: ${{ github.event.pull_request.head.ref || github.ref }} # The branch, tag or SHA to checkout
-          ref: io-test
+          ref: main
           #token: ${{ secrets.GH_CI_TOKEN }}
 
       - name: Run Trivy
