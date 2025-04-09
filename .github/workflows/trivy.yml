@@ -64,6 +64,7 @@ jobs:
           ignore-unfixed: true
           #vuln-type: 'os,library'  
           severity: 'CRITICAL,HIGH'
+          scanners: "vuln,secret,misconfig,license"  
 
       - name: Check Trivy result file
         run: cat trivy-result.txt    
