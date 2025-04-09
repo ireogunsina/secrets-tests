@@ -47,12 +47,20 @@ jobs:
           #ref: ${{ github.event.pull_request.head.ref || github.ref }} # The branch, tag or SHA to checkout
           ref: main
           #token: ${{ secrets.GH_CI_TOKEN }}
+      
+
+      - name: Additional Checks
+        run: |
+          pwd
+          ls -al
+
 
       - name: Run Trivy
-        uses: aquasecurity/trivy-action@0.15.0 # Pinned, pending fix to https://github.com/aquasecurity/trivy/issues/5752
+        uses: aquasecurity/trivy-action@0.28.0 # Pinned, pending fix to https://github.com/aquasecurity/trivy/issues/5752
         id: security
         with:
-          scan-type: 'config'
+          #scan-type: 'config'
+          scan-type: 'fs'  
           #scan-ref: ${{ inputs.terraform_working_directory }}
           scan-ref: '.'  
           hide-progress: false
@@ -63,8 +71,10 @@ jobs:
           exit-code: 0
           ignore-unfixed: true
           #vuln-type: 'os,library'  
-          severity: 'CRITICAL,HIGH'
+          severity: "MEDIUM,HIGH,CRITICAL"
+          #severity: 'CRITICAL,HIGH'
           scanners: "vuln,secret,misconfig,license"  
+          tf-vars: './tfvars'  
 
       - name: Check Trivy result file
         run: cat trivy-result.txt    
