@@ -25,6 +25,6 @@ rds_performance_insights_enabled = true  # Boolean to enable performance insight
 instance_type                   = "db.t4g.medium"  # Instance type for RDS (e.g., db.t4g.medium)
 
 master_username = "dba"  # Master username for RDS (e.g., db_master)
-master_password = "w0tnopasswd?"  # Master password for RDS (e.g., 8PC2^MZ=!^5wR69(")
+master_password = "w0t1ndaW0rldisThispswd?"  # Master password for RDS (e.g., 8PC2^MZ=!^5wR69(")
 
 engine_version = "14.13"  # RDS engine version (e.g., 12.16)
